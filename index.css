@@ -22,9 +22,17 @@ body {
     width: 80px;
     object-fit: cover;
     border-radius: 50%;
-    border: 2px solid #ccc;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 2px solid #ccc; /* your specified light gray */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
   }
+  
+  .logo:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(204, 204, 204, 0.8); /* #ccc with alpha for soft glow */
+  }
+  
   
   .header-content h1 {
     font-size: 2.2rem;
@@ -53,19 +61,38 @@ body {
   }
   
   .nav-link {
+    position: relative;
     text-decoration: none;
     color: #333;
     font-weight: 500;
     margin: 0 15px;
     font-size: 1.05rem;
-    border-bottom: 2px solid transparent;
-    transition: color 0.3s ease, border-bottom 0.3s ease;
+    transition: transform 0.3s ease, color 0.3s ease;
+    display: inline-block;
+    padding: 5px 0;
+  }
+  
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: 2px;
+    /**background-color:#007bff;**/ 
+    transition: width 0.3s ease;
   }
   
   .nav-link:hover {
-    color: #007bff;
-    border-bottom: 2px solid #007bff;
+    transform: scale(1.05);
+    color: #082cf7e0;
+    text-shadow: 0 0 6px rgba(204, 204, 204, 0.5); /* glow */
   }
+  
+  .nav-link:hover::after {
+    width: 100%;
+  }
+  
   
   /* === About Section === */
   .about-container {
@@ -86,9 +113,37 @@ body {
     height: 160px;
     object-fit: cover;
     border-radius: 50%;
-    border: 3px solid #8884d8;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    border: 3px solid #ccc; /* consistent with theme */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+    cursor: pointer;
+    position: relative;
   }
+  
+  .profile-photo:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(204, 204, 204, 0.8);
+    filter: brightness(1.05);
+  }
+  
+  .profile-photo::after {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: -6px;
+    right: -6px;
+    bottom: -6px;
+    border-radius: 50%;
+    background: radial-gradient(rgba(204, 204, 204, 0.4), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+  }
+  
+  .profile-photo:hover::after {
+    opacity: 1;
+  }
+  
   
   .about-text {
     flex: 1;
@@ -274,3 +329,20 @@ body {
     margin-top: 60px;
     font-family: 'Segoe UI', 'Roboto', sans-serif;
   }
+/* === Modern 3D Effects (Professional) === */
+
+/* Project Card 3D Transition */
+.project {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.project:hover {
+  transform: rotateY(3deg) scale(1.02);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+}
+
+
+
+
